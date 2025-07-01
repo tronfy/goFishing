@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://wjw3cnvyxjmh"]
+
+[ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="1_hmqde"]
+[ext_resource type="Script" uid="uid://csl1vy2yrfgeb" path="res://scripts/ui/peixedex.gd" id="1_u6rjs"]
+[ext_resource type="PackedScene" uid="uid://cg8cfkx2f1xab" path="res://prefabs/fish_container.tscn" id="3_85l31"]
+[ext_resource type="Script" uid="uid://bcx5ho530u71p" path="res://scripts/ui/back_button.gd" id="3_u6rjs"]
+
+[node name="Peixedex" type="Node2D"]
+script = ExtResource("1_u6rjs")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2340.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.647022, 0.885019, 0.863257, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.454902)
+
+[node name="BackButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 150.0
+action_mode = 0
+icon = ExtResource("1_hmqde")
+icon_alignment = 1
+script = ExtResource("3_u6rjs")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.5
+offset_top = 26.0
+offset_right = 160.5
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "PeixeDex"
+horizontal_alignment = 1
+
+[node name="Carregando" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.5
+offset_top = -49.5
+offset_right = 233.5
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.162066, 0.162066, 0.162066, 1)
+theme_override_font_sizes/font_size = 72
+text = "Carregando..."
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 182.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 2
+
+[node name="FishContainer" parent="Control/GridContainer" instance=ExtResource("3_85l31")]
+layout_mode = 2
+
+[node name="FishContainer2" parent="Control/GridContainer" instance=ExtResource("3_85l31")]
+layout_mode = 2
+
+[node name="FishContainer3" parent="Control/GridContainer" instance=ExtResource("3_85l31")]
+layout_mode = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_on_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]

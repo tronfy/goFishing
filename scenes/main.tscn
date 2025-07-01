@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch1wy7n1kjkm3"]
+
+[ext_resource type="Texture2D" uid="uid://dm3fi7p0c0wkb" path="res://sprites/placeholder/mapa.png" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://dp50uyydpcyxx" path="res://sprites/location.png" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://dp2o3gta8pndt" path="res://sprites/fishing_game_assets/4 Icons/Icons_01.png" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://bqmhyenb75myp" path="res://scripts/ui/fish_button.gd" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://c0jhf43wbxx4d" path="res://sprites/fishing_game_assets/4 Icons/Icons_05.png" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://d04vq1hh54ycm" path="res://sprites/fishing_game_assets/4 Icons/Icons_11.png" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://4vjbcrblsv3y" path="res://scripts/ui/peixedex_button.gd" id="6_tipki"]
+[ext_resource type="Texture2D" uid="uid://cqqp5u4c8smi" path="res://sprites/settings.png" id="7_choun"]
+[ext_resource type="Script" uid="uid://ck3aywen3mk6q" path="res://scripts/ui/mochila_button.gd" id="8_tipki"]
+[ext_resource type="Script" uid="uid://ccggp7i1uvqif" path="res://scripts/ui/config_button.gd" id="8_ya4ey"]
+
+[node name="Mapa" type="Node2D"]
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(-141, -22)
+scale = Vector2(2.47715, 2.47715)
+texture = ExtResource("1_o5qli")
+centered = false
+
+[node name="Pin" type="Sprite2D" parent="."]
+position = Vector2(540, 1130)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0wfyh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2340.0
+
+[node name="FishButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -290.0
+offset_right = 100.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("3_sugp2")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_jyhfs")
+
+[node name="PeixedexButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -315.0
+offset_top = -265.0
+offset_right = -165.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("5_tefeu")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_tipki")
+
+[node name="ConfigButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 176.0
+action_mode = 0
+icon = ExtResource("7_choun")
+icon_alignment = 1
+script = ExtResource("8_ya4ey")
+
+[node name="MochilaButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 165.0
+offset_top = -265.0
+offset_right = 315.0
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 0
+action_mode = 0
+icon = ExtResource("6_o6xl0")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_tipki")
+
+[connection signal="pressed" from="Control/FishButton" to="Control/FishButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/PeixedexButton" to="Control/PeixedexButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/ConfigButton" to="Control/ConfigButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/MochilaButton" to="Control/MochilaButton" method="_on_pressed"]

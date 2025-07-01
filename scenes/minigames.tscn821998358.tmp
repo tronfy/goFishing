@@ -1,0 +1,220 @@
+[gd_scene load_steps=5 format=3 uid="uid://5vddnj3x55m7"]
+
+[ext_resource type="Script" uid="uid://dbyuew8arbvb1" path="res://scripts/minigames.gd" id="1_msb3r"]
+[ext_resource type="Script" uid="uid://bwke3b0u04a4q" path="res://scripts/tilt.gd" id="2_135ii"]
+[ext_resource type="Script" uid="uid://dpnidxrrwxq3f" path="res://scripts/sensors.gd" id="3_h6msd"]
+[ext_resource type="Script" uid="uid://ddvkionr4gig3" path="res://scenes/timer_bar.gd" id="3_w7mfh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_msb3r")
+
+[node name="Sensors" type="Node" parent="."]
+script = ExtResource("3_h6msd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DebugSensors" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="LabelEmpty" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelX" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "X"
+horizontal_alignment = 1
+
+[node name="LabelY" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Y"
+horizontal_alignment = 1
+
+[node name="LabelZ" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Z"
+horizontal_alignment = 1
+
+[node name="Accelerometer" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Accelerometer"
+
+[node name="AccX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="AccY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="AccZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Gravity" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Gravity"
+
+[node name="GravX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GravY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GravZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Magnetometer" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Magnetometer"
+
+[node name="MagX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="MagY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="MagZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Gyroscope" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Gyroscope"
+
+[node name="GyroX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GyroY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GyroZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="LabelEmpty2" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty3" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty4" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty5" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="North" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "North"
+
+[node name="NorthX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="NorthY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="NorthZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="TimerBar" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 15.0
+grow_horizontal = 2
+color = Color(0.168627, 0.917647, 0.282353, 1)
+script = ExtResource("3_w7mfh")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(150, 75)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "botão"
+
+[node name="TimerCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="TimerMinigame" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Tilt" type="Label" parent="."]
+visible = false
+offset_left = 181.0
+offset_top = 372.0
+offset_right = 239.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+text = "inclinar"
+script = ExtResource("2_135ii")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="success_button"]
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="TimerMinigame" to="." method="_on_minigame_timeout"]
+[connection signal="tilt_success" from="Tilt" to="." method="_on_tilt_success"]

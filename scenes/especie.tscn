@@ -1,0 +1,225 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwupmf43i1ehm"]
+
+[ext_resource type="Script" uid="uid://djbugn3xcymev" path="res://scripts/especie.gd" id="1_1o6tx"]
+[ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="2_5es8q"]
+[ext_resource type="Script" uid="uid://bkd3dgov5np3j" path="res://scripts/ui/especie_back_button.gd" id="3_ruu4g"]
+[ext_resource type="Texture2D" uid="uid://d2ma548wimd83" path="res://sprites/kenney_fish_pack/fish_blue.png" id="4_ruu4g"]
+
+[node name="Especie" type="Node2D"]
+script = ExtResource("1_1o6tx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2340.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.647022, 0.885019, 0.863257, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.454902)
+
+[node name="BackButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 150.0
+action_mode = 0
+icon = ExtResource("2_5es8q")
+icon_alignment = 1
+script = ExtResource("3_ruu4g")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.5
+offset_top = 26.0
+offset_right = 160.5
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Espécie"
+horizontal_alignment = 1
+
+[node name="LabelEspecie" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.5
+offset_top = 625.0
+offset_right = 160.5
+offset_bottom = 740.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_font_sizes/font_size = 84
+text = "Espécie"
+horizontal_alignment = 1
+
+[node name="LabelInfoPesoMedio" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 881.0
+offset_right = -40.0
+offset_bottom = 969.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 48
+text = "Peso médio"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelPesoMedio" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 881.0
+offset_right = 450.0
+offset_bottom = 969.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "até 50 kg"
+vertical_alignment = 1
+
+[node name="LabelInfoTamanhoMedio" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 969.0
+offset_right = -40.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 48
+text = "Tamanho médio"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelTamanhoMedio" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 969.0
+offset_right = 450.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "até 1,4 metros"
+vertical_alignment = 1
+
+[node name="LabelInfoNativa" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 1061.0
+offset_right = -40.0
+offset_bottom = 1149.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 48
+text = "Nativa"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelNativa" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1061.0
+offset_right = 450.0
+offset_bottom = 1149.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "sim"
+vertical_alignment = 1
+
+[node name="LabelInfoRecorde" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 1280.0
+offset_right = -40.0
+offset_bottom = 1368.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 48
+text = "Recorde de captura"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelRecorde" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1280.0
+offset_right = 450.0
+offset_bottom = 1368.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "1.2m"
+vertical_alignment = 1
+
+[node name="LabelNomeCientifico" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -268.0
+offset_top = 720.0
+offset_right = 268.0
+offset_bottom = 819.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.359069, 0.359069, 0.359069, 1)
+theme_override_font_sizes/font_size = 52
+text = "nome científico"
+horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 157.0
+offset_bottom = 632.0
+grow_horizontal = 2
+texture = ExtResource("4_ruu4g")
+stretch_mode = 5
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_on_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]

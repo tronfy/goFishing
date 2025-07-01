@@ -1,0 +1,376 @@
+[gd_scene load_steps=18 format=3 uid="uid://5vddnj3x55m7"]
+
+[ext_resource type="Script" uid="uid://dbyuew8arbvb1" path="res://scripts/minigames/minigames.gd" id="1_msb3r"]
+[ext_resource type="Script" uid="uid://bwke3b0u04a4q" path="res://scripts/minigames/tilt.gd" id="2_135ii"]
+[ext_resource type="Script" uid="uid://dpnidxrrwxq3f" path="res://scripts/minigames/sensors.gd" id="3_h6msd"]
+[ext_resource type="Script" uid="uid://ddvkionr4gig3" path="res://scripts/minigames/timer_bar.gd" id="3_w7mfh"]
+[ext_resource type="Script" uid="uid://dvk7f07nfnnto" path="res://score.gd" id="3_xdsn5"]
+[ext_resource type="Texture2D" uid="uid://dfc28j0bgfwgd" path="res://sprites/fishing_bobbles/fishing_bobbles.png" id="5_7meb8"]
+[ext_resource type="Texture2D" uid="uid://c61yie47b0y1x" path="res://sprites/autorenew.png" id="6_4ysqd"]
+[ext_resource type="Script" uid="uid://dc3phkhyb6lyx" path="res://scripts/minigames/spin.gd" id="6_xakh2"]
+[ext_resource type="Script" uid="uid://by0wmdluipdvk" path="res://scripts/minigames/bob.gd" id="8_i714h"]
+[ext_resource type="Texture2D" uid="uid://glpwo1h0kurx" path="res://sprites/vara.png" id="10_lfhps"]
+[ext_resource type="Script" uid="uid://b0gr5u4ymth84" path="res://scripts/minigames/rod.gd" id="11_8qxkc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i714h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xakh2"]
+atlas = ExtResource("5_7meb8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ysqd"]
+atlas = ExtResource("5_7meb8")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7meb8"]
+atlas = ExtResource("5_7meb8")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i714h"]
+atlas = ExtResource("5_7meb8")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfhps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xakh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ysqd")
+}],
+"loop": true,
+"name": &"bob",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7meb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i714h")
+}],
+"loop": true,
+"name": &"hook",
+"speed": 6.0
+}]
+
+[node name="Minigames" type="Node2D"]
+script = ExtResource("1_msb3r")
+
+[node name="Sensors" type="Node" parent="."]
+script = ExtResource("3_h6msd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2340.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DebugSensors" type="GridContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="LabelEmpty" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelX" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "X"
+horizontal_alignment = 1
+
+[node name="LabelY" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Y"
+horizontal_alignment = 1
+
+[node name="LabelZ" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Z"
+horizontal_alignment = 1
+
+[node name="Accelerometer" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Accelerometer"
+
+[node name="AccX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="AccY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="AccZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Gravity" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Gravity"
+
+[node name="GravX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GravY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GravZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Magnetometer" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Magnetometer"
+
+[node name="MagX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="MagY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="MagZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Gyroscope" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "Gyroscope"
+
+[node name="GyroX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GyroY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="GyroZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="LabelEmpty2" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty3" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty4" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="LabelEmpty5" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+
+[node name="North" type="Label" parent="Control/DebugSensors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.666667, 0.666667, 0.666667, 1)
+text = "North"
+
+[node name="NorthX" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="NorthY" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="NorthZ" type="Label" parent="Control/DebugSensors"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Score" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 160.0
+offset_right = 500.0
+offset_bottom = 260.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i714h")
+script = ExtResource("3_xdsn5")
+
+[node name="ScoreBar" type="ColorRect" parent="Control"]
+layout_mode = 2
+offset_left = 47.0
+offset_top = 167.0
+offset_right = 1033.0
+offset_bottom = 254.0
+grow_horizontal = 2
+scale = Vector2(1e-05, 1)
+size_flags_horizontal = 0
+color = Color(0.862745, 0.862745, 0.862745, 1)
+
+[node name="TimerBar" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+color = Color(0, 0.952941, 0.313726, 1)
+script = ExtResource("3_w7mfh")
+
+[node name="Catch" type="Label" parent="Control"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_top = 1500.0
+offset_right = 1080.0
+offset_bottom = 1574.0
+theme_override_colors/font_color = Color(0.623505, 1, 0.507445, 1)
+theme_override_font_sizes/font_size = 54
+text = "Você pescou um [PEIXE]!"
+horizontal_alignment = 1
+
+[node name="Flee" type="Label" parent="Control"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_top = 1500.0
+offset_right = 1080.0
+offset_bottom = 1574.0
+theme_override_colors/font_color = Color(1, 0.647172, 0.604973, 1)
+theme_override_font_sizes/font_size = 54
+text = "O peixe escapou!"
+horizontal_alignment = 1
+
+[node name="Tilt" type="Label" parent="Control"]
+visible = false
+z_index = 3
+layout_mode = 0
+offset_top = 634.0
+offset_right = 1080.0
+offset_bottom = 708.0
+theme_override_font_sizes/font_size = 54
+text = "inclinar para a [?]"
+horizontal_alignment = 1
+script = ExtResource("2_135ii")
+
+[node name="Tap" type="Button" parent="Control"]
+visible = false
+z_index = 3
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 0
+offset_left = 405.0
+offset_top = 493.0
+offset_right = 705.0
+offset_bottom = 693.0
+theme_override_font_sizes/font_size = 54
+action_mode = 0
+text = "toque!"
+
+[node name="TimerCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerMinigame" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerFish" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Bob" type="AnimatedSprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(560, 1100)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_lfhps")
+animation = &"bob"
+script = ExtResource("8_i714h")
+
+[node name="Spin" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(540, 1200)
+scale = Vector2(3, 3)
+texture = ExtResource("6_4ysqd")
+script = ExtResource("6_xakh2")
+
+[node name="Rod" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(700, 1034)
+rotation = 0.610865
+scale = Vector2(-35, 35)
+texture = ExtResource("10_lfhps")
+offset = Vector2(-14.45, 11.535)
+script = ExtResource("11_8qxkc")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="HTTPPostRequest" type="HTTPRequest" parent="."]
+
+[connection signal="bob_hook_update" from="." to="Bob" method="_on_hook_update"]
+[connection signal="bob_hook_update" from="." to="Rod" method="_mode_reel"]
+[connection signal="bob_reset" from="." to="Bob" method="_on_bob_reset"]
+[connection signal="bob_reset" from="." to="Rod" method="_mode_idle"]
+[connection signal="score_changed" from="." to="Control/Score" method="_on_score_changed"]
+[connection signal="tilt_fail" from="Control/Tilt" to="." method="_on_tilt_fail"]
+[connection signal="tilt_success" from="Control/Tilt" to="." method="_on_tilt_success"]
+[connection signal="pressed" from="Control/Tap" to="." method="_on_tap_success"]
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="TimerMinigame" to="." method="_on_minigame_timeout"]
+[connection signal="timeout" from="TimerFish" to="." method="_on_hook_timeout"]
+[connection signal="spin_success" from="Spin" to="." method="_on_spin_success"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]

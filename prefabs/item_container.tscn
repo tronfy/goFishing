@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://bbr771e6wefaj" path="res://scripts/ui/item_container.gd" id="1_84abf"]
 [ext_resource type="Texture2D" uid="uid://d0wuefxt7rnbp" path="res://sprites/fishing_game_assets/4 Icons/Icons_16.png" id="2_84abf"]
 
-[node name="ItemContainer" type="ColorRect"]
+[node name="ItemContainer" type="Button"]
 custom_minimum_size = Vector2(0, 300)
 offset_right = 465.0
 offset_bottom = 300.0
 size_flags_horizontal = 3
-color = Color(0, 0, 0, 0.176471)
 script = ExtResource("1_84abf")
 
 [node name="Texture" type="TextureRect" parent="."]
@@ -49,3 +48,5 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 42
 text = "2x"
 horizontal_alignment = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

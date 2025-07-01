@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://l1dxtbd2g6au"]
 
-[ext_resource type="Script" uid="uid://djbugn3xcymev" path="res://scripts/especie.gd" id="1_vljjh"]
+[ext_resource type="Script" uid="uid://n1hi7b52yx7u" path="res://scripts/item.gd" id="1_vljjh"]
 [ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="2_ro5b8"]
 [ext_resource type="Script" uid="uid://bkd3dgov5np3j" path="res://scripts/ui/especie_back_button.gd" id="3_d265e"]
 [ext_resource type="Texture2D" uid="uid://d0wuefxt7rnbp" path="res://sprites/fishing_game_assets/4 Icons/Icons_16.png" id="4_vljjh"]
@@ -55,7 +55,7 @@ theme_override_font_sizes/font_size = 72
 text = "Item"
 horizontal_alignment = 1
 
-[node name="LabelEspecie" type="Label" parent="Control"]
+[node name="LabelItem" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -66,7 +66,7 @@ offset_right = 160.5
 offset_bottom = 740.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
-theme_override_font_sizes/font_size = 84
+theme_override_font_sizes/font_size = 76
 text = "Item"
 horizontal_alignment = 1
 
@@ -75,16 +75,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -497.0
+offset_left = -514.0
 offset_top = 755.0
-offset_right = 497.0
+offset_right = 514.0
 offset_bottom = 1087.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.359069, 0.359069, 0.359069, 1)
-theme_override_font_sizes/font_size = 46
+theme_override_font_sizes/font_size = 42
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a suscipit tellus.
 Donec convallis bibendum magna, id ornare erat consectetur non."
-horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Texture" type="TextureRect" parent="Control"]
@@ -118,9 +117,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -494.0
-offset_top = 1122.0
+offset_top = 1226.0
 offset_right = -40.0
-offset_bottom = 1210.0
+offset_bottom = 1314.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
 theme_override_font_sizes/font_size = 48
@@ -134,9 +133,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -4.0
-offset_top = 1122.0
+offset_top = 1226.0
 offset_right = 450.0
-offset_bottom = 1210.0
+offset_bottom = 1314.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
 theme_override_font_sizes/font_size = 56
@@ -149,9 +148,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -494.0
-offset_top = 1228.0
+offset_top = 1332.0
 offset_right = -40.0
-offset_bottom = 1316.0
+offset_bottom = 1420.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
 theme_override_font_sizes/font_size = 42
@@ -165,9 +164,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -4.0
-offset_top = 1228.0
+offset_top = 1332.0
 offset_right = 450.0
-offset_bottom = 1316.0
+offset_bottom = 1420.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
 theme_override_font_sizes/font_size = 56

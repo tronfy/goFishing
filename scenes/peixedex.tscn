@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="1_hmqde"]
 [ext_resource type="Script" uid="uid://csl1vy2yrfgeb" path="res://scripts/ui/peixedex.gd" id="1_u6rjs"]
-[ext_resource type="PackedScene" uid="uid://cg8cfkx2f1xab" path="res://prefabs/fish_container.tscn" id="3_85l31"]
+[ext_resource type="PackedScene" uid="uid://h2cumguxdqh8" path="res://prefabs/fish_container.tscn" id="3_85l31"]
 [ext_resource type="Script" uid="uid://bcx5ho530u71p" path="res://scripts/ui/back_button.gd" id="3_u6rjs"]
 
 [node name="Peixedex" type="Node2D"]

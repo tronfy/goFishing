@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://h2cumguxdqh8"]
+
+[ext_resource type="Script" uid="uid://iwtqebveenqv" path="res://scripts/ui/fish_container.gd" id="1_cfjx2"]
+[ext_resource type="Texture2D" uid="uid://d2ma548wimd83" path="res://sprites/kenney_fish_pack/fish_blue.png" id="1_dd6ly"]
+
+[node name="FishContainer" type="Button"]
+custom_minimum_size = Vector2(0, 300)
+offset_right = 465.0
+offset_bottom = 300.0
+size_flags_horizontal = 3
+script = ExtResource("1_cfjx2")
+
+[node name="Texture" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 225.0
+grow_horizontal = 2
+texture = ExtResource("1_dd6ly")
+stretch_mode = 5
+
+[node name="EspecieLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Espécie"
+horizontal_alignment = 1
+
+[node name="RecordeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 68.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 42
+text = "0.0m"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

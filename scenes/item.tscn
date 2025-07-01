@@ -1,0 +1,180 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1dxtbd2g6au"]
+
+[ext_resource type="Script" uid="uid://djbugn3xcymev" path="res://scripts/especie.gd" id="1_vljjh"]
+[ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="2_ro5b8"]
+[ext_resource type="Script" uid="uid://bkd3dgov5np3j" path="res://scripts/ui/especie_back_button.gd" id="3_d265e"]
+[ext_resource type="Texture2D" uid="uid://d0wuefxt7rnbp" path="res://sprites/fishing_game_assets/4 Icons/Icons_16.png" id="4_vljjh"]
+
+[node name="Item" type="Node2D"]
+script = ExtResource("1_vljjh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 2340.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.647022, 0.885019, 0.863257, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.454902)
+
+[node name="BackButton" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 150.0
+action_mode = 0
+icon = ExtResource("2_ro5b8")
+icon_alignment = 1
+script = ExtResource("3_d265e")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.5
+offset_top = 26.0
+offset_right = 160.5
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Item"
+horizontal_alignment = 1
+
+[node name="LabelEspecie" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.5
+offset_top = 625.0
+offset_right = 160.5
+offset_bottom = 740.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+theme_override_font_sizes/font_size = 84
+text = "Item"
+horizontal_alignment = 1
+
+[node name="LabelDescricao" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -497.0
+offset_top = 755.0
+offset_right = 497.0
+offset_bottom = 1087.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.359069, 0.359069, 0.359069, 1)
+theme_override_font_sizes/font_size = 46
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a suscipit tellus.
+Donec convallis bibendum magna, id ornare erat consectetur non."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Texture" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 157.0
+offset_bottom = 632.0
+grow_horizontal = 2
+texture = ExtResource("4_vljjh")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -198.0
+offset_right = -40.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 56
+text = "Usar Item"
+
+[node name="LabelInfoDuracao" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 1122.0
+offset_right = -40.0
+offset_bottom = 1210.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 48
+text = "Duração"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelDuracao" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1122.0
+offset_right = 450.0
+offset_bottom = 1210.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "5 min"
+vertical_alignment = 1
+
+[node name="LabelInfoQtd" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -494.0
+offset_top = 1228.0
+offset_right = -40.0
+offset_bottom = 1316.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423651, 0.423651, 0.423651, 1)
+theme_override_font_sizes/font_size = 42
+text = "Quantidade restante"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelQtd" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 1228.0
+offset_right = 450.0
+offset_bottom = 1316.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.114897, 0.114897, 0.114897, 1)
+theme_override_font_sizes/font_size = 56
+text = "2x"
+vertical_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_on_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]

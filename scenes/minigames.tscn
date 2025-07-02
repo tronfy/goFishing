@@ -320,7 +320,7 @@ layout_mode = 0
 offset_top = 1500.0
 offset_right = 1080.0
 offset_bottom = 1574.0
-theme_override_colors/font_color = Color(1, 0.647172, 0.604973, 1)
+theme_override_colors/font_color = Color(0.999994, 0.47566, 0.428014, 1)
 theme_override_font_sizes/font_size = 54
 text = "O peixe escapou!"
 horizontal_alignment = 1
@@ -351,7 +351,6 @@ action_mode = 0
 text = "toque!"
 
 [node name="ItemLabel" type="Label" parent="Control"]
-visible = false
 layout_mode = 1
 offset_left = 43.0
 offset_top = 100.0

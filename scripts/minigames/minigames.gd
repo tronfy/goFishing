@@ -25,21 +25,21 @@ var userID
 var games = [
 	{
 		"name": "tap",
-		"timeout": 2.0,
+		"timeout": 1.5,
 		"start": Callable(self, "show_tap"),
 		"chance": 1,
 	},
 	{
 		"name": "tilt",
-		"timeout": 2.0,
+		"timeout": 1.5,
 		"start": Callable(self, "show_tilt"),
-		"chance": 0,
+		"chance": 3,
 	},
 	{
 		"name": "spin",
-		"timeout": 4.0,
+		"timeout": 3.0,
 		"start": Callable(self, "show_spin"),
-		"chance": 0,
+		"chance": 1,
 	},
 ]
 

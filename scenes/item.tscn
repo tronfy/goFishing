@@ -176,4 +176,5 @@ vertical_alignment = 1
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_use_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]

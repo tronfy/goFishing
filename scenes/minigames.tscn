@@ -282,6 +282,19 @@ theme_override_font_sizes/font_size = 54
 text = "Você pescou um [PEIXE]!"
 horizontal_alignment = 1
 
+[node name="CatchItem" type="Label" parent="Control"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_top = 1267.0
+offset_right = 1080.0
+offset_bottom = 1341.0
+theme_override_colors/font_color = Color(0.623505, 1, 0.507445, 1)
+theme_override_font_sizes/font_size = 54
+text = "Você pescou um [ITEM]!
+Confira sua Mochila"
+horizontal_alignment = 1
+
 [node name="Flee" type="Label" parent="Control"]
 visible = false
 z_index = 5
@@ -318,6 +331,16 @@ offset_bottom = 693.0
 theme_override_font_sizes/font_size = 54
 action_mode = 0
 text = "toque!"
+
+[node name="ItemLabel" type="Label" parent="Control"]
+layout_mode = 1
+offset_left = 43.0
+offset_top = 100.0
+offset_right = 470.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "Feromônio (1m13s)"
 
 [node name="TimerCooldown" type="Timer" parent="."]
 one_shot = true
@@ -360,6 +383,8 @@ script = ExtResource("11_8qxkc")
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="HTTPPostRequest" type="HTTPRequest" parent="."]
+
+[node name="HTTPItemPostRequest" type="HTTPRequest" parent="."]
 
 [connection signal="bob_hook_update" from="." to="Bob" method="_on_hook_update"]
 [connection signal="bob_hook_update" from="." to="Rod" method="_mode_reel"]

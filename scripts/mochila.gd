@@ -10,7 +10,8 @@ func _on_request_completed(result, response_code, headers, body):
 	if len(json) > 0:
 		for i in json:
 			if i != null and i.quantidade > 0:
-				s = scene.instantiate().with_data(i.nome, i.descricao, i.quantidade)
+				print(i.id, i.nome)
+				s = scene.instantiate().with_data(i.id, i.nome, i.descricao, i.quantidade)
 				$Control/GridContainer.add_child(s)
 				print(i)
 	

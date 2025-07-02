@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://mejnfkvcq7io"]
+
+[ext_resource type="Script" uid="uid://47gin2c2n6aq" path="res://scripts/item_timer.gd" id="1_4pk28"]
+[ext_resource type="Script" uid="uid://8qmri033ek3" path="res://scripts/global.gd" id="1_nmxvb"]
+
+[node name="Global" type="Node2D"]
+script = ExtResource("1_nmxvb")
+
+[node name="ItemTimer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+script = ExtResource("1_4pk28")
+
+[connection signal="timeout" from="ItemTimer" to="." method="_on_item_timer_timeout"]

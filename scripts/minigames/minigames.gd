@@ -4,10 +4,6 @@ extends Node2D
 var start_score = 2
 var catch_score = 5 
 
-# afetado por itens
-var fish_wait_time = 5.0
-var minigame_timeout_scale = 1.0
-
 var peixe
 var tamanho
 
@@ -21,6 +17,8 @@ signal bob_hook_update
 @onready var TimerBar = $Control/TimerBar
 @onready var CatchLabel = $Control/Catch
 @onready var FleeLabel = $Control/Flee
+
+@onready var ItemTimer = get_node("/root/Global/ItemTimer")
 
 var userID
 
@@ -94,6 +92,27 @@ func success():
 		elif peixe.tamanho != null and tamanho > peixe.tamanho: CatchLabel.text += "Novo recorde!"
 		CatchLabel.visible = true
 		
+		# sortear item
+		var c = randf_range(0, 1)
+		print(c, " ", Global.item_chance)
+		if c < Global.item_chance:
+			var i = randi_range(3, 6)
+			print("ganhou item: ", str(i))
+			$Control/CatchItem.visible = true
+		
+			var body = {
+				"userID": userID,
+				"itemID": i,
+				"quantidade": 1
+			}
+			var json = JSON.stringify(body)
+			
+			var headers = ["Content-Type: application/json"]
+			var url = Constants.API_URL + "/item/adicionarIteminventario"
+			
+			$HTTPItemPostRequest.request(url, headers, HTTPClient.METHOD_POST, json)
+
+		
 		var body = {
 			"userID": userID,
 			"peixeID": peixe.id,
@@ -108,7 +127,6 @@ func success():
 		setup_waiting_for_fish()
 	else:
 		bob_hook_update.emit(score, catch_score)
-		
 		$TimerCooldown.start()
 
 func fail():
@@ -143,7 +161,7 @@ func _on_cooldown_timeout() -> void:
 			break
 
 	Input.vibrate_handheld(100)
-	$TimerMinigame.start(game["timeout"] * minigame_timeout_scale)
+	$TimerMinigame.start(game["timeout"] * Global.minigame_timeout_scale)
 	TimerBar.visible = true
 	game["start"].call()
 
@@ -155,12 +173,12 @@ func _on_request_completed(result, response_code, headers, body):
 	var peixes = JSON.parse_string(body.get_string_from_utf8())
 	
 	peixe = peixes[randi_range(0, len(peixes)-1)]  # sortear uma especie
-	tamanho = randf_range(peixe.tamanhoMinimo, peixe.tamanhoMaximo)  # sortear tamanho
+	tamanho = randf_range(peixe.tamanhoMaximo * Global.fish_boost, peixe.tamanhoMaximo)  # sortear tamanho
 	tamanho = snapped(tamanho, 0.01)
 	
 	# definir catch_score a partir do tamanho
 	catch_score = round(remap(tamanho, peixe.tamanhoMinimo, peixe.tamanhoMaximo, 4, 8))
-	print("sorteou: ", peixe.nome, "(", str(tamanho), "m), dificuldade=", catch_score)
+	print("sorteou: ", peixe.nome, "(", str(tamanho), "m), dificuldade=", catch_score + Global.minigame_add)
 	
 	start_fishing()
 
@@ -185,12 +203,13 @@ func cleanup_after_minigame():
 	CatchLabel.visible = false
 	FleeLabel.visible = false
 	TimerBar.visible = false
+	$Control/CatchItem.visible = false
 
 func setup_waiting_for_fish():
 	score = start_score
 	$Control/Score.visible = false
 	$Control/ScoreBar.visible = false
-	$TimerFish.start(fish_wait_time)
+	$TimerFish.start(Global.fish_wait_time)
 	bob_reset.emit()
 
 func _ready():
@@ -202,6 +221,13 @@ func _ready():
 	var status = config.load("user://auth.cfg")
 	if status != OK: return
 	userID = config.get_value("player", "userID")
+
+func _process(delta):
+	if ItemTimer.time_left > 0:
+		$Control/ItemLabel.text = Global.itemNome + " (" + str(int(ItemTimer.time_left)) + "s)"
+	else:
+		$Control/ItemLabel.text = ""
+	
 
 func _notification(what: int):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:

@@ -146,6 +146,7 @@ func _on_minigame_timeout() -> void:
 	fail()
 
 func _on_cooldown_timeout() -> void:
+	$Control/BackButton.visible = false
 	# var next = randi_range(0, games.size() - 1)
 	var total = 0
 	for game in games:
@@ -180,6 +181,8 @@ func _on_request_completed(result, response_code, headers, body):
 	catch_score = round(remap(tamanho, peixe.tamanhoMinimo, peixe.tamanhoMaximo, 4, 8))
 	print("sorteou: ", peixe.nome, "(", str(tamanho), "m), dificuldade=", catch_score + Global.minigame_add)
 	
+	$Control/StarsLabel.text = Global.get_stars_string(tamanho, peixe.tamanhoMaximo)
+	
 	start_fishing()
 
 func start_fishing():
@@ -188,6 +191,7 @@ func start_fishing():
 	cleanup_after_minigame()
 	$Control/Score.visible = true
 	$Control/ScoreBar.visible = true
+	$Control/StarsLabel.visible = true
 	Input.vibrate_handheld(300)
 	bob_hook_update.emit(score, catch_score)
 	$TimerCooldown.start(2)
@@ -209,6 +213,7 @@ func setup_waiting_for_fish():
 	score = start_score
 	$Control/Score.visible = false
 	$Control/ScoreBar.visible = false
+	$Control/StarsLabel.visible = false
 	$TimerFish.start(Global.fish_wait_time)
 	bob_reset.emit()
 
@@ -232,3 +237,7 @@ func _process(delta):
 func _notification(what: int):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_http_post_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	$Control/BackButton.visible = true

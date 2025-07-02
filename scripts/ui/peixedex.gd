@@ -9,7 +9,7 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	for p in json:
 		var tamanho = str(p.tamanho) + "m"
-		f = scene.instantiate().with_data(p.nome, p.nomeCientifico, p.tamanhoMedio, p.pesoMedio, p.nativa, p.conhecido, p.capturado, tamanho, p.icone)
+		f = scene.instantiate().with_data(p.nome, p.nomeCientifico, p.tamanhoMedio, p.pesoMedio, p.nativa, p.conhecido, p.capturado, tamanho, p.icone, p.tamanhoMinimo, p.tamanhoMaximo)
 		$Control/GridContainer.add_child(f)
 	
 	$Control/Carregando.visible = false

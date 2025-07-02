@@ -18,6 +18,11 @@ func update_user_id() -> void:
 	if status != OK: return
 	userID = config.get_value("player", "userID")
 
+func get_stars_string(tamanho: float, tamanhoMaximo: float):
+	var stars = int((float(tamanho) / (tamanhoMaximo*0.95)) * 3)
+	var starsString = ""
+	for i in range(stars): starsString += "★"
+	return starsString
 
 func _on_item_timer_timeout() -> void:
 	itemNome = null

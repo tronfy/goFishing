@@ -12,6 +12,11 @@ var s: TelaEspecie
 	"tilapia": preload("res://sprites/kenney_fish_pack/fish_pink.png"),
 	"sardinha": preload("res://sprites/kenney_fish_pack/fish_grey.png"),
 	"surubim": preload("res://sprites/kenney_fish_pack/fish_red.png"),
+	"traira": preload("res://sprites/kenney_fish_pack/fish_grey.png"),
+	"tucunare_amarelo": preload("res://sprites/kenney_fish_pack/fish_orange.png"),
+	"tucunare_azul": preload("res://sprites/kenney_fish_pack/fish_blue.png"),
+	"lambari": preload("res://sprites/kenney_fish_pack/fish_red.png"),
+	"pacu": preload("res://sprites/kenney_fish_pack/fish_brown.png"),
 }
 	
 
@@ -24,6 +29,8 @@ var visto: bool
 var capturado: bool
 var tamanho: String
 var icone: String
+var tamanhoMinimo: float
+var tamanhoMaximo: float
 
 func with_data(
 	_especie: String,
@@ -34,7 +41,9 @@ func with_data(
 	_visto: bool,
 	_capturado: bool,
 	_tamanho: String,
-	_icone: String
+	_icone: String,
+	_tamanhoMinimo: float,
+	_tamanhoMaximo: float
 ) -> FishContainer:
 	especie = _especie
 	nome_cientifico = _nome_cientifico
@@ -45,12 +54,14 @@ func with_data(
 	capturado = _capturado
 	tamanho = _tamanho
 	icone = _icone
+	tamanhoMinimo = _tamanhoMinimo
+	tamanhoMaximo = _tamanhoMaximo
 	return self
 
 func _ready() -> void:
 	if capturado:
 		$EspecieLabel.text = especie
-		$RecordeLabel.text = tamanho
+		$RecordeLabel.text = tamanho + "\n" + Global.get_stars_string(float(tamanho), tamanhoMaximo)
 	else: 
 		$EspecieLabel.text = "?"
 		$RecordeLabel.text = ""
@@ -64,5 +75,5 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	s = scene.instantiate().with_data(especie, nome_cientifico, tamanho_medio, peso_medio, nativa, visto, capturado, tamanho, icone)
+	s = scene.instantiate().with_data(especie, nome_cientifico, tamanho_medio, peso_medio, nativa, visto, capturado, tamanho, icone, tamanhoMinimo, tamanhoMaximo)
 	get_parent().get_parent().add_child(s)

@@ -21,6 +21,8 @@ var visto: bool
 var capturado: bool
 var tamanho: String
 var icone: String
+var tamanhoMinimo: float
+var tamanhoMaximo: float
 
 func with_data(
 		_especie: String,
@@ -31,7 +33,9 @@ func with_data(
 		_visto: bool,
 		_capturado: bool,
 		_tamanho: String,
-		_icone: String
+		_icone: String,
+		_tamanhoMinimo: float,
+		_tamanhoMaximo: float
 	) -> TelaEspecie:
 	especie = _especie
 	nome_cientifico = _nome_cientifico
@@ -42,6 +46,8 @@ func with_data(
 	capturado = _capturado
 	tamanho = _tamanho
 	icone = _icone
+	tamanhoMinimo = _tamanhoMinimo
+	tamanhoMaximo = _tamanhoMaximo
 	return self
 
 func _ready() -> void:
@@ -52,7 +58,7 @@ func _ready() -> void:
 		$Control/LabelTamanhoMedio.text = tamanho_medio
 		$Control/LabelNativa.text = "sim" if nativa else "não"
 		
-		$Control/LabelRecorde.text = tamanho
+		$Control/LabelRecorde.text = tamanho + " (" + Global.get_stars_string(float(tamanho), tamanhoMaximo) + ")"
 	else: 
 		$Control/LabelEspecie.text = "?"
 		$Control/LabelNomeCientifico.text = "? ?"

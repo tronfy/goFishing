@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://5vddnj3x55m7"]
+[gd_scene load_steps=20 format=3 uid="uid://5vddnj3x55m7"]
 
 [ext_resource type="Script" uid="uid://dbyuew8arbvb1" path="res://scripts/minigames/minigames.gd" id="1_msb3r"]
 [ext_resource type="Script" uid="uid://bwke3b0u04a4q" path="res://scripts/minigames/tilt.gd" id="2_135ii"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://dvk7f07nfnnto" path="res://score.gd" id="3_xdsn5"]
 [ext_resource type="Texture2D" uid="uid://dfc28j0bgfwgd" path="res://sprites/fishing_bobbles/fishing_bobbles.png" id="5_7meb8"]
 [ext_resource type="Texture2D" uid="uid://c61yie47b0y1x" path="res://sprites/autorenew.png" id="6_4ysqd"]
+[ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="6_md4tt"]
 [ext_resource type="Script" uid="uid://dc3phkhyb6lyx" path="res://scripts/minigames/spin.gd" id="6_xakh2"]
+[ext_resource type="Script" uid="uid://bcx5ho530u71p" path="res://scripts/ui/back_button.gd" id="7_78awk"]
 [ext_resource type="Script" uid="uid://by0wmdluipdvk" path="res://scripts/minigames/bob.gd" id="8_i714h"]
 [ext_resource type="Texture2D" uid="uid://glpwo1h0kurx" path="res://sprites/vara.png" id="10_lfhps"]
 [ext_resource type="Script" uid="uid://b0gr5u4ymth84" path="res://scripts/minigames/rod.gd" id="11_8qxkc"]
@@ -78,6 +80,22 @@ offset_right = 1080.0
 offset_bottom = 2340.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="StarsLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.0
+offset_top = 262.0
+offset_right = 284.0
+offset_bottom = 362.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "★★★"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DebugSensors" type="GridContainer" parent="Control"]
 visible = false
@@ -333,6 +351,7 @@ action_mode = 0
 text = "toque!"
 
 [node name="ItemLabel" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 offset_left = 43.0
 offset_top = 100.0
@@ -341,6 +360,15 @@ offset_bottom = 164.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 46
 text = "Feromônio (1m13s)"
+
+[node name="BackButton" type="Button" parent="Control"]
+texture_filter = 1
+offset_right = 150.0
+offset_bottom = 150.0
+action_mode = 0
+icon = ExtResource("6_md4tt")
+icon_alignment = 1
+script = ExtResource("7_78awk")
 
 [node name="TimerCooldown" type="Timer" parent="."]
 one_shot = true
@@ -394,8 +422,10 @@ script = ExtResource("11_8qxkc")
 [connection signal="tilt_fail" from="Control/Tilt" to="." method="_on_tilt_fail"]
 [connection signal="tilt_success" from="Control/Tilt" to="." method="_on_tilt_success"]
 [connection signal="pressed" from="Control/Tap" to="." method="_on_tap_success"]
+[connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_on_pressed"]
 [connection signal="timeout" from="TimerCooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="TimerMinigame" to="." method="_on_minigame_timeout"]
 [connection signal="timeout" from="TimerFish" to="." method="_on_hook_timeout"]
 [connection signal="spin_success" from="Spin" to="." method="_on_spin_success"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]
+[connection signal="request_completed" from="HTTPPostRequest" to="." method="_on_http_post_request_request_completed"]

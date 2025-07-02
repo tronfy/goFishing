@@ -208,6 +208,7 @@ func cleanup_after_minigame():
 	FleeLabel.visible = false
 	TimerBar.visible = false
 	$Control/CatchItem.visible = false
+	$Control/BackButton.visible = true
 
 func setup_waiting_for_fish():
 	score = start_score

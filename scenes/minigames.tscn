@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bwke3b0u04a4q" path="res://scripts/minigames/tilt.gd" id="2_135ii"]
 [ext_resource type="Script" uid="uid://dpnidxrrwxq3f" path="res://scripts/minigames/sensors.gd" id="3_h6msd"]
 [ext_resource type="Script" uid="uid://ddvkionr4gig3" path="res://scripts/minigames/timer_bar.gd" id="3_w7mfh"]
-[ext_resource type="Script" uid="uid://dvk7f07nfnnto" path="res://score.gd" id="3_xdsn5"]
+[ext_resource type="Script" path="res://score.gd" id="3_xdsn5"]
 [ext_resource type="Texture2D" uid="uid://dfc28j0bgfwgd" path="res://sprites/fishing_bobbles/fishing_bobbles.png" id="5_7meb8"]
 [ext_resource type="Texture2D" uid="uid://c61yie47b0y1x" path="res://sprites/autorenew.png" id="6_4ysqd"]
 [ext_resource type="Texture2D" uid="uid://cgce0at8hj8vr" path="res://sprites/arrow_back.png" id="6_md4tt"]
@@ -362,6 +362,7 @@ text = "Feromônio (1m13s)"
 
 [node name="BackButton" type="Button" parent="Control"]
 texture_filter = 1
+layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 action_mode = 0

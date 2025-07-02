@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch1wy7n1kjkm3"]
+[gd_scene load_steps=12 format=3 uid="uid://fw8lttfdkyee"]
 
-[ext_resource type="Texture2D" uid="uid://dm3fi7p0c0wkb" path="res://sprites/placeholder/mapa.png" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://dp50uyydpcyxx" path="res://sprites/location.png" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://ch0mnf872d7tf" path="res://Scenes/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bpnt0yvbysdow" path="res://PraxisMapper/Controls/ScrollingCenteredMap2.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://8os6eof5qcbh" path="res://PraxisMapper/APICalls/PraxisEndpoints.tscn" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://dp2o3gta8pndt" path="res://sprites/fishing_game_assets/4 Icons/Icons_01.png" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://bqmhyenb75myp" path="res://scripts/ui/fish_button.gd" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://c0jhf43wbxx4d" path="res://sprites/fishing_game_assets/4 Icons/Icons_05.png" id="5_tefeu"]
@@ -11,18 +12,16 @@
 [ext_resource type="Script" uid="uid://ck3aywen3mk6q" path="res://scripts/ui/mochila_button.gd" id="8_tipki"]
 [ext_resource type="Script" uid="uid://ccggp7i1uvqif" path="res://scripts/ui/config_button.gd" id="8_ya4ey"]
 
-[node name="Mapa" type="Node2D"]
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8gbba")
 
-[node name="Map" type="Sprite2D" parent="."]
-position = Vector2(-141, -22)
-scale = Vector2(2.47715, 2.47715)
-texture = ExtResource("1_o5qli")
-centered = false
+[node name="ScrollingCenteredMap" parent="." instance=ExtResource("2_jjvhh")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1080.0
+offset_bottom = 2320.0
 
-[node name="Pin" type="Sprite2D" parent="."]
-position = Vector2(540, 1130)
-scale = Vector2(2, 2)
-texture = ExtResource("2_0wfyh")
+[node name="PraxisEndpoints" parent="." instance=ExtResource("3_kry3j")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -44,6 +43,7 @@ offset_right = 100.0
 offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 0
+disabled = true
 action_mode = 0
 icon = ExtResource("3_sugp2")
 icon_alignment = 1

@@ -1,14 +1,12 @@
 class_name TelaItem
 extends Node2D
 
-#@onready var icones = {
-	#"jau": preload("res://sprites/kenney_fish_pack/fish_blue.png"),
-	#"piracanjuba": preload("res://sprites/kenney_fish_pack/fish_brown.png"),
-	#"dourado": preload("res://sprites/kenney_fish_pack/fish_orange.png"),
-	#"tilapia": preload("res://sprites/kenney_fish_pack/fish_pink.png"),
-	#"sardinha": preload("res://sprites/kenney_fish_pack/fish_grey.png"),
-	#"surubim": preload("res://sprites/kenney_fish_pack/fish_red.png"),
-#}
+@onready var icones = {
+	3: preload("res://sprites/fishing_game_assets/4 Icons/Icons_20.png"),
+	4: preload("res://sprites/fishing_game_assets/4 Icons/Icons_11.png"),
+	5: preload("res://sprites/fishing_game_assets/4 Icons/Icons_12.png"),
+	6: preload("res://sprites/fishing_game_assets/4 Icons/Icons_14.png")
+}
 
 @onready var timer = get_node("/root/Global/ItemTimer")
 
@@ -42,9 +40,9 @@ func _ready() -> void:
 	if (timer.time_left > 0):
 		$Control/Button.text = "já existe um item ativo"
 	
-	#var showIcone = icones.get(icone)
-	#if showIcone:
-		#$Control/Texture.texture = showIcone
+	var showIcone = icones.get(id)
+	if showIcone:
+		$Control/Texture.texture = showIcone
 	
 func _on_use_pressed() -> void:
 	if (timer.time_left > 0): return
